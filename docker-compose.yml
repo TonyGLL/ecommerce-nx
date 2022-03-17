@@ -79,6 +79,8 @@ services:
     restart: "always"
     networks:
       - store_backend_default
+volumes:
+     pgdata:
 networks:
   store_backend_default:
     external: true
