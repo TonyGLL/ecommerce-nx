@@ -1,0 +1,16 @@
+redis_*
+.git
+*Dockerfile*
+*docker-compose*
+node_modules
+/node_modules
+dist
+.vscode
+/.vscode/*
+.history
+.firebase
+.editorconfig
+/e2e
+/docs
+.gitignore
+*.zip

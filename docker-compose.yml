@@ -1,5 +1,19 @@
 version: "3.7"
 services:
+  db:
+    image: postgres:14.1
+    container_name: postgresql
+    ports:
+      - "5432:5432"
+    restart: "always"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin123
+      - POSTGRES_DB=postgres_typescript
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - store_backend_default
   users:
     build:
       context: $PWD
