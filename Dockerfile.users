@@ -1,0 +1,13 @@
+FROM node:lts-alpine
+RUN mkdir -p /base/apps/users
+RUN mkdir -p /base/build/apps/users
+WORKDIR /base/apps/users
+ENV NODE_ENV=dev
+COPY ./apps/users /base/apps/users
+COPY package.json /base
+COPY tsconfig.base.json /base
+COPY ./apps/users/.env.dev /base/build/apps/users
+RUN npm install
+RUN npm run build:users
+EXPOSE 3000
+CMD ["npm", "run", "start:users"]

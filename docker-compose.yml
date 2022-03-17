@@ -1,0 +1,70 @@
+version: "3.7"
+services:
+  users:
+    build:
+      context: $PWD
+      dockerfile: $PWD/Dockerfile.users
+    image: store/users:v1.0.0
+    container_name: users
+    user: "node"
+    hostname: node
+    ports:
+      - "3002:3000"
+    restart: "always"
+    networks:
+      - store_backend_default
+  auth:
+    build:
+      context: $PWD
+      dockerfile: $PWD/Dockerfile.auth
+    image: store/auth:v1.0.0
+    container_name: auth
+    user: "node"
+    hostname: node
+    ports:
+      - "3003:3000"
+    restart: "always"
+    networks:
+      - store_backend_default
+  categories:
+    build:
+      context: $PWD
+      dockerfile: $PWD/Dockerfile.categories
+    image: store/categories:v1.0.0
+    container_name: categories
+    user: "node"
+    hostname: node
+    ports:
+      - "3004:3000"
+    restart: "always"
+    networks:
+      - store_backend_default
+  products:
+    build:
+      context: $PWD
+      dockerfile: $PWD/Dockerfile.products
+    image: store/products:v1.0.0
+    container_name: products
+    user: "node"
+    hostname: node
+    ports:
+      - "3004:3000"
+    restart: "always"
+    networks:
+      - store_backend_default
+  excel:
+    build:
+      context: $PWD
+      dockerfile: $PWD/Dockerfile.excel
+    image: store/excel:v1.0.0
+    container_name: excel
+    user: "node"
+    hostname: node
+    ports:
+      - "3005:3000"
+    restart: "always"
+    networks:
+      - store_backend_default
+networks:
+  store_backend_default:
+    external: true

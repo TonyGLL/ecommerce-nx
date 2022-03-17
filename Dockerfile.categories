@@ -1,0 +1,13 @@
+FROM node:lts-alpine
+RUN mkdir -p /base/apps/categories
+RUN mkdir -p /base/build/apps/categories
+WORKDIR /base/apps/categories
+ENV NODE_ENV=dev
+COPY ./apps/categories /base/apps/categories
+COPY package.json /base
+COPY tsconfig.base.json /base
+COPY ./apps/categories/.env.dev /base/build/apps/categories
+RUN npm install
+RUN npm run build:categories
+EXPOSE 3000
+CMD ["npm", "run", "start:categories"]

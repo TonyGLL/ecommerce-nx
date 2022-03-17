@@ -1,0 +1,13 @@
+FROM node:lts-alpine
+RUN mkdir -p /base/apps/products
+RUN mkdir -p /base/build/apps/products
+WORKDIR /base/apps/products
+ENV NODE_ENV=dev
+COPY ./apps/products /base/apps/products
+COPY package.json /base
+COPY tsconfig.base.json /base
+COPY ./apps/products/.env.dev /base/build/apps/products
+RUN npm install
+RUN npm run build:products
+EXPOSE 3000
+CMD ["npm", "run", "start:products"]

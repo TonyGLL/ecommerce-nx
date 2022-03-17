@@ -1,0 +1,13 @@
+FROM node:lts-alpine
+RUN mkdir -p /base/apps/excel
+RUN mkdir -p /base/build/apps/excel
+WORKDIR /base/apps/excel
+ENV NODE_ENV=dev
+COPY ./apps/excel /base/apps/excel
+COPY package.json /base
+COPY tsconfig.base.json /base
+COPY ./apps/excel/.env.dev /base/build/apps/excel
+RUN npm install
+RUN npm run build:excel
+EXPOSE 3000
+CMD ["npm", "run", "start:excel"]

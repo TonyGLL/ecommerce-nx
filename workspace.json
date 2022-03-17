@@ -1,6 +1,10 @@
 {
   "version": 2,
   "projects": {
+    "auth": "apps/auth",
+    "categories": "apps/categories",
+    "excel": "apps/excel",
+    "products": "apps/products",
     "users": "apps/users"
   }
 }

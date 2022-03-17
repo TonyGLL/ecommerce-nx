@@ -29,5 +29,13 @@
       }
     ]
   },
-  "defaultProject": "users"
+  "projects": {
+    "users": {
+      "tags": []
+    },
+    "auth": {
+      "tags": []
+    }
+  },
+  "defaultProject": "categories"
 }
